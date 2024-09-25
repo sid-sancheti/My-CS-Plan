@@ -45,8 +45,7 @@ Then install the dependencies:
 ### Start the server
 In terminal, inside your repository's folder, cd into backend/ 
 
-    cd .. 
-    cd /backend
+    cd ../backend
 Then install the requirements
 
     pip install -r requirements.txt
