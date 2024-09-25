@@ -1,13 +1,20 @@
-FROM node:14.17
+# Use the official Node.js image from the Docker Hub
+FROM node:14
 
-WORKDIR /website
+# Set the working directory
+WORKDIR /app
 
-COPY . .
+# Copy package.json and package-lock.json into the container
+COPY package*.json ./
 
+# Install the dependencies
 RUN npm install
 
+# Copy the rest of your application code into the container
+COPY . .
+
+# Expose the port that the frontend runs on
 EXPOSE 3000
 
-RUN npm run build
-
-ENTRYPOINT [ "npm", "run", "start" ]
+# Command to run your application
+CMD ["npm", "run", "dev"]
