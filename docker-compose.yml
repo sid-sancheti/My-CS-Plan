@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./website  # The directory containing your frontend Dockerfile
+    ports:
+      - "3000:3000"  # Expose port 3000 on the host machine
+    restart: always  # Restart the container if it crashes
+    depends_on:
+      - backend  # Ensures backend starts before frontend
+    container_name: frontend-container
+
+  backend:
+    build:
+      context: ./backend  # The directory containing your backend Dockerfile
+    restart: always  # Restart the container if it crashes
+    ports:
+      - "5000:5000"  # Expose port 5000 on the host machine
+    container_name: backend-container
